@@ -1,4 +1,4 @@
-cpuidplayer
+CPUID player
 ===========
 
-Program written in C++, plus a small gcc asm inline routine, dedicated to read and output the status of the CPUID registers
+CPUID player is a program written entirely in C++, except for a small gcc asm routine, that aims to be an utility to read from CPUID registers and output the result in a readable way.
