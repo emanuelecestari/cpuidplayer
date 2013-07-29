@@ -1,24 +1,31 @@
 // The MIT License (MIT)
-// 
+//
 // Copyright (c) 2013 Emanuele Cestari
-// 
-// Permission is hereby granted, free of charge, to any person obtaining a copy of
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of
 // this software and associated documentation files (the "Software"), to deal in
 // the Software without restriction, including without limitation the rights to
-// use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
-// the Software, and to permit persons to whom the Software is furnished to do so,
+// use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies
+// of
+// the Software, and to permit persons to whom the Software is furnished to do
+// so,
 // subject to the following conditions:
-// 
-// The above copyright notice and this permission notice shall be included in all
+//
+// The above copyright notice and this permission notice shall be included in
+// all
 // copies or substantial portions of the Software.
-// 
+//
 // THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
-// FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
-// COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS
+// FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS
+// OR
+// COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+// WHETHER
 // IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-// 
+//
 
 // trying to determine what is the header available for unsigned ints
 #if __cplusplus < 201103L
@@ -75,11 +82,17 @@ int main(int argc, char **argv) {
     exit(EXIT_FAILURE);
   }
 
+  std::cout.setf(std::ios::hex, std::ios::basefield);
+  std::cout.setf(std::ios::showbase);
+
   std::cout << "\nExecuting with this HEX values :\n\n";
-  std::cout << "EAX = 0x" << std::hex << bucket["EAX"] << "\n"
-            << "EBX = 0x" << std::hex << bucket["EBX"] << "\n"
-            << "ECX = 0x" << std::hex << bucket["ECX"] << "\n"
-            << "EDX = 0x" << std::hex << bucket["EDX"] << "\n";
+  std::cout << "EAX = " << std::hex << bucket["EAX"] << "\n"
+            << "EBX = " << std::hex << bucket["EBX"] << "\n"
+            << "ECX = " << std::hex << bucket["ECX"] << "\n"
+            << "EDX = " << std::hex << bucket["EDX"] << "\n";
+
+  std::cout.unsetf(std::ios::showbase);
+  std::cout.unsetf(std::ios::hex);
 
   asm volatile("cpuid"
                : "=a"(bucket["EAX"]), "=b"(bucket["EBX"]), "=c"(bucket["ECX"]),
